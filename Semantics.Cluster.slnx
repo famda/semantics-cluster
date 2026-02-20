@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <File Path="Dockerfile.ray" />
+    <Project Path="src/Semantics.Api/Semantics.Api.csproj" Id="4d2eea7c-9b7d-402d-b710-e2f9a8e78688" />
+  </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
+</Solution>

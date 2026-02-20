@@ -1,0 +1,13 @@
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  # Ray metrics — auto-discovers all nodes (head + workers) via the Ray
+  # Dashboard's HTTP service discovery endpoint. No static IPs required.
+  - job_name: 'ray'
+    http_sd_configs:
+      - url: 'http://localhost:8265/api/prometheus/sd'
+        refresh_interval: 15s
+    # Ray's metrics agents listen on --metrics-export-port (8080)
+    # The SD endpoint already embeds the correct host:port per node.

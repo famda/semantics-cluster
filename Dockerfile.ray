@@ -1,0 +1,14 @@
+FROM rayproject/ray:latest-py312-gpu
+
+USER root
+
+# ffmpeg decodes MP4/MP3 → WAV; soundfile does seekable chunk reads
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ffmpeg && \
+    rm -rf /var/lib/apt/lists/*
+
+# Pre-install Python deps so workers don't need runtime_env pip installs
+RUN pip install --no-cache-dir \
+    faster-whisper \
+    azure-storage-blob \
+    soundfile
